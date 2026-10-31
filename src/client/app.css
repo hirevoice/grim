@@ -2659,3 +2659,44 @@ input[type="radio"] {
   width: fit-content;
   max-width: calc(100% - 32px);
 }
+
+/* HireVoice: warm surfaces shared with the Pele report style. */
+:root {
+  --paper: #fffcf0;
+  --paper-2: #f2f0e5;
+  --paper-3: #e6e4d9;
+  --tint-hover: #e6e4d9;
+  --tint-active: #dad8ce;
+  --code-bg: #f2f0e5;
+  --ink: #100f0f;
+  --ink-2: #403e3c;
+  --muted: #6f6e69;
+  --grey-2: #6f6e69;
+  --grey: #878580;
+  --line: #cecdc3;
+  --line-soft: #e6e4d9;
+  --blue: #bc5215;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #100f0f;
+    --paper-2: #1c1b1a;
+    --paper-3: #282726;
+    --tint-hover: #282726;
+    --tint-active: #403e3c;
+    --code-bg: #1c1b1a;
+    --ink: #cecdc3;
+    --ink-2: #b7b5ac;
+    --muted: #a6a49b;
+    --grey-2: #a6a49b;
+    --grey: #878580;
+    --line: #403e3c;
+    --line-soft: #282726;
+    --blue: #da702c;
+    --warn-soft: rgba(224, 168, 0, 0.2);
+    --shadow-pop: 0 4px 20px rgba(0, 0, 0, 0.35);
+    --shadow-modal: 0 12px 64px rgba(0, 0, 0, 0.55);
+  }
+}

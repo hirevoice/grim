@@ -19,8 +19,10 @@
     "@pierre/highlights": "0.3.0",
     "@pierre/storage": "^1.17.1",
     "diff": "^8.0.4",
+    "dompurify": "^3.4.17",
     "just-bash": "^3.6.0",
     "lib0": "^0.2.119",
+    "pele": "1.6.0",
     "three": "0.170.0",
     "y-protocols": "^1.0.7",
     "yjs": "^13.6.33"

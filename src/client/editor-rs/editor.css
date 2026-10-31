@@ -499,3 +499,52 @@
 .mde-unsaved details { margin: 8px 0 0; font: 13px/1.4 var(--mde-ui-font); color: var(--mde-text); }
 .mde-unsaved summary { cursor: pointer; }
 .mde-unsaved .mde-fallback-text { margin-top: 8px; max-height: 40vh; overflow: auto; }
+
+/* Match the shell and keep notes readable in both system themes. */
+.mde {
+  --mde-text: #403e3c;
+  --mde-heading: #100f0f;
+  --mde-text-light: #575653;
+  --mde-accent: #100f0f;
+  --mde-link: #bc5215;
+  --mde-marker: #6f6e69;
+  --mde-bg: #fffcf0;
+  --mde-bg2: #e6e4d9;
+  --mde-code-bg: #f2f0e5;
+  --mde-stroke: #cecdc3;
+  --mde-quote: #cecdc3;
+  --mde-checked: #6f6e69;
+}
+@media (prefers-color-scheme: dark) {
+  .mde {
+    --mde-text: #cecdc3;
+    --mde-heading: #e6e4d9;
+    --mde-text-light: #b7b5ac;
+    --mde-accent: #cecdc3;
+    --mde-link: #da702c;
+    --mde-marker: #a6a49b;
+    --mde-bg: #100f0f;
+    --mde-bg2: #282726;
+    --mde-code-bg: #1c1b1a;
+    --mde-stroke: #403e3c;
+    --mde-quote: #403e3c;
+    --mde-checked: #a6a49b;
+  }
+}
+
+.mde-diagrams {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 24px;
+  color: var(--mde-text);
+  --pele-bg: var(--mde-bg);
+  --pele-fg: var(--mde-text);
+  --pele-muted: var(--mde-text-light);
+  --pele-line: var(--mde-text);
+  --pele-surface: var(--mde-code-bg);
+  --pele-surface-alt: var(--mde-bg2);
+  --pele-border: var(--mde-stroke);
+}
+.mde-diagrams h2 { font-size: 18px; font-weight: 500; }
+.mde-diagrams figure { margin: 16px 0; padding: 20px; border: 1px solid var(--mde-stroke); border-radius: 12px; overflow: auto; background: var(--mde-code-bg); }
+.mde-diagrams svg { display: block; max-width: 100%; height: auto; }
