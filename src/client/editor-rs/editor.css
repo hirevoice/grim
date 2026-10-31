@@ -531,3 +531,20 @@
     --mde-checked: #a6a49b;
   }
 }
+
+.mde-diagrams {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 24px;
+  color: var(--mde-text);
+  --pele-bg: var(--mde-bg);
+  --pele-fg: var(--mde-text);
+  --pele-muted: var(--mde-text-light);
+  --pele-line: var(--mde-text);
+  --pele-surface: var(--mde-code-bg);
+  --pele-surface-alt: var(--mde-bg2);
+  --pele-border: var(--mde-stroke);
+}
+.mde-diagrams h2 { font-size: 18px; font-weight: 500; }
+.mde-diagrams figure { margin: 16px 0; padding: 20px; border: 1px solid var(--mde-stroke); border-radius: 12px; overflow: auto; background: var(--mde-code-bg); }
+.mde-diagrams svg { display: block; max-width: 100%; height: auto; }

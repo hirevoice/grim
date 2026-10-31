@@ -15,6 +15,7 @@ import { AuthorGutter } from "./authors.ts";
 import { sigOf, toRLine, type RLine } from "./lineview.ts";
 import { applyLineReveal, collectImages, renderRLine, type CodeHl, type ImagePool, type RLineDiv } from "./render.ts";
 import { CodeHighlight, type CodeHost } from "./code.ts";
+import { Diagrams } from "./diagrams.ts";
 import { blockClip, blockRoom, dropStrays, groupBlocks, isBlock, lineDivOf, lineDivs, placeAfter, scrollBlockTo } from "./blocks.ts";
 import { applyEdits } from "./edits.ts";
 import { DomLayout, scrollBy, scrollToEdge, visibleBounds } from "./layout.ts";
@@ -115,6 +116,7 @@ export class RustEditorView implements CursorHost, CollabView, CodeHost {
   private hadFolds = false;
   /** Syntax highlighting of fenced code blocks. */
   private code: CodeHighlight;
+  private diagrams: Diagrams;
   /** Who wrote each line, in the left margin (notes only). */
   private authors: AuthorGutter | null = null;
   /** The patch being applied came from the others (remotePatch). */
@@ -170,6 +172,7 @@ export class RustEditorView implements CursorHost, CollabView, CodeHost {
     this.layout = new DomLayout(this);
     this.cursors = new RemoteCursors(this);
     this.code = new CodeHighlight(this);
+    this.diagrams = new Diagrams(this.wrapper);
     if (opts.collab) {
       this.authors = new AuthorGutter(this, opts.collab.user as { id: string; name: string; color: string; kind?: string });
       if (opts.collab.blame) this.authors.set(opts.collab.blame);
@@ -242,6 +245,7 @@ export class RustEditorView implements CursorHost, CollabView, CodeHost {
     const len = this.doc.text.length;
     this.sel = { anchor: clamp(p.sel.anchor, len), head: clamp(p.sel.head, len) };
     this.code.update();
+    this.diagrams.update(this.doc.text);
     if (!this.composing) this.writeDomSel();
     if (p.scroll === "caret") this.scrollCaretIntoView();
     else if (p.scroll === "start" || p.scroll === "end") scrollToEdge(this.wrapper, p.scroll === "start" ? -1 : 1);
@@ -843,6 +847,7 @@ export class RustEditorView implements CursorHost, CollabView, CodeHost {
     this.cursors.destroy();
     this.authors?.destroy();
     this.code.destroy();
+    this.diagrams.destroy();
     if (this.foldTimer) {
       clearTimeout(this.foldTimer);
       this.foldTimer = null;
